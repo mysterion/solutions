@@ -1,0 +1,43 @@
+#!/bin/bash
+
+repo="$HOME/informatics/solutions"
+
+run() {
+  stdin="$repo/input.txt"
+  output_dir="/tmp/wscpp"
+  src_file="$1"
+  extension="${src_file##*.}"
+
+  mkdir -p "$output_dir"
+  return_code="0"
+
+  if [[ "$extension" == "cpp" ]]; then
+    output_file="${output_dir}/${src_file}.out"
+    if [[ ! -f "$output_file" || "$src_file" -nt "$output_file" ]]; then
+      echo "Compiling C++ source file"
+      g++ -I$repo/lib/cpp/include/ -DLOCAL "$src_file" -o "$output_file"
+      return_code="$?"
+      echo "========================="
+    else
+      echo "Executing compiled C++ file"
+      echo "========================="
+    fi
+
+    if [ "$return_code" != "0" ]; then
+      return "$return_code"
+    fi
+
+    "$output_file" <$stdin
+
+  elif [[ "$extension" == "py" ]]; then
+    echo "Executing Python script"
+    echo "========================="
+    python3 "$src_file" <$stdin
+
+  else
+    echo "Unsupported file type: $extension"
+    return 1
+  fi
+}
+
+run "$1"

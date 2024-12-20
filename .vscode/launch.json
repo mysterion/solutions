@@ -1,0 +1,80 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "gdb",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "g++ build for debug"
+        },
+        {
+            "name": "run cpp with input",
+            "type": "cppdbg",
+            "cwd": "${fileDirname}",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": [
+                "<",
+                "${workspaceRoot}/input.txt"
+            ],
+            "preLaunchTask": "g++ build only"
+        },
+        {
+            "name": "run cpp",
+            "cwd": "${fileDirname}",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": [],
+            "preLaunchTask": "g++ build only"
+        },
+        {
+            "name": "run python",
+            "cwd": "${fileDirname}",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "python",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+        },
+        {
+            "name": "run python with input",
+            "cwd": "${fileDirname}",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${command:python.interpreterPath}",
+            "args": [
+                "${file}",
+                "<",
+                "${workspaceRoot}/input.txt"
+            ],
+        }
+    ]
+}

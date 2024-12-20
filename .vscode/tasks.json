@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "g++ build for debug",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-o",
+                "${fileBasenameNoExtension}.out",
+                "-g",
+                "${fileBasename}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "type": "cppbuild",
+            "label": "g++ build only",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-o",
+                "${fileBasenameNoExtension}.out",
+                "${fileBasename}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        }
+    ]
+}

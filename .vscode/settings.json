@@ -1,0 +1,23 @@
+{
+    "editor.formatOnSave": true,
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor",
+    },
+    "editor.detectIndentation": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    // "editor.autoClosingBrackets": "never",
+    "editor.parameterHints.enabled": false,
+    "workbench.tree.indent": 16,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.acceptSuggestionOnEnter": "smart",
+    "[cpp]": {
+        "editor.wordBasedSuggestions": "currentDocument",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    },
+    "clangd.fallbackFlags": [
+        "-I",
+        "${workspaceFolder}/lib/include",
+    ],
+}
